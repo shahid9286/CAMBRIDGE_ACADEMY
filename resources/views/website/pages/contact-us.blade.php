@@ -31,8 +31,8 @@
                     <p class="cravix-card-content">
                         Send us an email anytime and we'll respond as soon as possible.
                     </p>
-                    <a href="mailto:{{ $setting->email}}" class="cravix-contact-link">
-                        {{ $setting->email}} <i class="fas fa-paper-plane"></i>
+                    <a href="mailto:{{ $setting->email }}" class="cravix-contact-link">
+                        {{ $setting->email }} <i class="fas fa-paper-plane"></i>
                     </a>
                 </div>
             </div>
@@ -49,8 +49,8 @@
                     <p class="cravix-card-content">
                         Give us a call during business hours for immediate assistance.
                     </p>
-                    <a href="tel:{{ $setting->phone_no}}" class="cravix-contact-link">
-                        {{ $setting->phone_no}} <i class="fas fa-phone-alt"></i>
+                    <a href="tel:{{ $setting->phone_no }}" class="cravix-contact-link">
+                        {{ $setting->phone_no }} <i class="fas fa-phone-alt"></i>
                     </a>
                 </div>
             </div>
@@ -67,9 +67,11 @@
                     <p class="cravix-card-content">
                         Come visit our office during business hours for a face-to-face meeting.
                     </p>
-                    <a href="https://maps.google.com" target="_blank" class="cravix-contact-link">
-                       {{ $setting->address}} <i class="fas fa-map-marked-alt"></i>
+                    <a href="https://www.google.com/maps/dir//College+Rd,+Whalley+Range,+Manchester+M16+8BP,+United+Kingdom/@53.4490888,-2.3467374,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x487bad538922392d:0x54dd2da9bcc5af56!2m2!1d-2.2643404!2d53.4491769?entry=ttu&g_ep=EgoyMDI1MTAxMy4wIKXMDSoASAFQAw%3D%3D"
+                        target="_blank" class="cravix-contact-link">
+                        {{ $setting->address }} <i class="fas fa-map-marked-alt"></i>
                     </a>
+
                 </div>
             </div>
         </div>

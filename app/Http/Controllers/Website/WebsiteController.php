@@ -5,30 +5,25 @@ namespace App\Http\Controllers\Website;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\Course;
+use App\Models\Service;
 use App\Models\CourseCategory;
 use App\Models\Enquiry;
-use App\Models\FeatureSection;
 use App\Models\Gallery;
-use App\Models\InfoBlock;
-use App\Models\Job;
 use App\Models\Partner;
-use App\Models\Service;
-use App\Models\ServiceCategory;
 use App\Models\Slider;
 use App\Models\Team;
-use App\Models\TestimonialSection;
-use App\Models\WhyChooseUsSection;
+use App\Models\Job;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-
 class WebsiteController extends Controller
 {
     public function index()
     {
         $sliders = Slider::where('status', 1)->orderBy('serial_no', 'ASC')->get();
         $partners = Partner::where('status', 'published')->orderBy('order_no', 'ASC')->get();
-   
-        return view('website.index', compact('sliders', 'partners'));
+        $blogs = Blog::where('status', 1)->orderBy('serial_number', 'ASC')->get();
+
+        return view('website.index', compact('sliders', 'partners', 'blogs'));
     }
 
     public function aboutUs()
@@ -120,57 +115,36 @@ class WebsiteController extends Controller
     {
         $category = CourseCategory::where('slug', $category_slug)->firstOrFail();
         $category_wise_courses = Course::where('course_category_id', $category->id)
-            ->where('status', 1)
-            ->orderBy('serial_number', 'ASC')
-            ->get();
+        ->where('status', 1)
+        ->orderBy('serial_number', 'ASC')
+        ->get();
 
         return view('website.course.category-wise-courses', compact('category', 'category_wise_courses'));
     }
 
-    public function joblist()
+     public function joblist()
     {
         $jobs = Job::all();
 
         return view('website.jobs', compact('jobs'));
     }
 
-    public function jobDetail($slug)
+     public function jobDetail($slug)
     {
         $job = Job::where('slug', $slug)->firstOrFail();
-
         return view('website.job-detail', compact('job'));
     }
 
-    public function services()
+     public function services()
     {
         $jobs = Job::all();
 
         return view('website.jobs', compact('jobs'));
     }
 
-    public function serviceDetail($slug)
+     public function serviceDetail($slug)
     {
         $service = Service::where('slug', $slug)->firstOrFail();
-
-        $services = Service::where('service_category_id', $service->service_category_id)
-            ->where('id', '!=', $service->id)
-            ->get();
-
-        return view('website.service-detail', compact('service', 'services'));
-    }
-
-    public function serviceCategory()
-    {
-        $serviceCategories = ServiceCategory::where('status', 'publish')->orderBy('order_no', 'ASC')->get();
-
-        return view('website.sevice_category_detail', compact('serviceCategories'));
-    }
-
-    public function allServices($slug)
-    {
-        $serviceCategory = ServiceCategory::where('slug', $slug)->firstOrFail();
-        $services = Service::where('status', 'publish')->where('service_category_id', $serviceCategory->id)->orderBy('order_no', 'ASC')->get();
-
-        return view('website.service', compact('services'));
+        return view('website.service-detail', compact('service'));
     }
 }

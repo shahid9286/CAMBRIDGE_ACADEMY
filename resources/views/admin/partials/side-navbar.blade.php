@@ -240,7 +240,7 @@
 
                 {{-- Tempelate Files --}}
 
-
+                {{-- Courses Routes --}}
                 <li
                     class="nav-item {{ request()->routeIs('admin.course.*') || request()->routeIs('admin.course.category.*') ? 'menu-open' : '' }}">
                     <a href="#"

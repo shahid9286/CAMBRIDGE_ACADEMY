@@ -10,6 +10,8 @@
     ])
 
     @include('website.partials.about3')
+
+    @include('website.partials.our-mission')
     
     @include('website.partials.why_choose_us_about')
 

@@ -4,6 +4,7 @@
 @section('content')
     @include('website.partials.slider')
     @include('website.partials.about2')
+    @include('website.partials.our-mission')
     @include('website.partials.university-pathways')
     @include('website.partials.professional-courses')
     @include('website.partials.short-courses')

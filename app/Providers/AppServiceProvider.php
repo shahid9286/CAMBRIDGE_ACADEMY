@@ -8,7 +8,6 @@ use App\Models\ServiceCategory;
 use App\Models\Course;
 use App\Models\Setting;
 use App\Models\Page;
-use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -39,7 +38,14 @@ class AppServiceProvider extends ServiceProvider
             View::share('categories', $categories);
         }
 
+        if (Schema::hasTable('courses')) {
+            $courses = Course::whereHas('category', function($q){
+                $q->whereNot('slug', 'short-courses');
+            })->where('status',1)->orderBy('serial_number','ASC')->get();
 
+            
+            View::share('courses', $courses);
+        }
 
         if (Schema::hasTable('service_categories')) {
             //    $serviceCategories = ServiceCategory::where('status', 'publish')->orderBy('order_no', 'asc')
@@ -49,15 +55,6 @@ class AppServiceProvider extends ServiceProvider
 
             View::share('serviceCategories', $serviceCategories);
         }
-
-        Blade::directive('banners', function ($position) {
-            return "<?php echo view('front.partials.banner', [
-        'bannerList' => \App\Models\Banner::where('status', 'active')
-            ->where('type', $position)
-            ->orderBy('order_no', 'ASC')
-            ->get()
-    ])->render(); ?>";
-        });
 
 
 

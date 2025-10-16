@@ -10,7 +10,7 @@ use App\Http\Controllers\Service\RealEstateController;
 use App\Http\Controllers\Service\InvestmentAdvisoryController;
 
 // Frontend routes
-Route::get('/', [FrontController::class, 'index'])->name('front.index');
+Route::get('/sfdsdf', [FrontController::class, 'index'])->name('front.index');
 Route::get('/about-us', [FrontController::class, 'aboutUs'])->name('front.about');
 Route::get('/contact-us', [FrontController::class, 'contactUs'])->name('front.contactus');
 Route::post('/contact-us-store', [FrontController::class, 'contactUsStore'])->name('front.contactus.store');

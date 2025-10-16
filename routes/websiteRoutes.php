@@ -3,7 +3,7 @@
 use App\Http\Controllers\Website\WebsiteController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/web', [WebsiteController::class, 'index'])->name('website.index');
+Route::get('/', [WebsiteController::class, 'index'])->name('website.index');
 
 Route::prefix('website')->name('website.')->group(function () {
     Route::get('/about-us', [WebsiteController::class, 'aboutUs'])->name('about');
@@ -19,9 +19,6 @@ Route::prefix('website')->name('website.')->group(function () {
     Route::get('/jobs', [WebsiteController::class, 'joblist'])->name('joblist');
     Route::get('/job/{slug}', [WebsiteController::class, 'jobDetail'])->name('job.detail');
 
-    Route::get('/sevice-category', [WebsiteController::class, 'serviceCategory'])->name('serviceCategory');
-
     Route::get('/services', [WebsiteController::class, 'services'])->name('services');
-    Route::get('/service-category/{slug}', [WebsiteController::class, 'allServices'])->name('service.category');
     Route::get('/service/{slug}', [WebsiteController::class, 'serviceDetail'])->name('service.detail');
 });
