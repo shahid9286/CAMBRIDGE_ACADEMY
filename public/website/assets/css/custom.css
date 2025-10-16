@@ -1,0 +1,173 @@
+.cravix-info-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    height: 100%;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.cravix-info-card:before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 210%;
+    height: 210%;
+    background: var(--dark) !important;
+    transform: rotate(45deg);
+    transition: all 0.6s ease;
+    z-index: 0;
+}
+
+.cravix-info-card:hover:before {
+    transform: rotate(45deg) translate(20%, 20%);
+}
+
+.cravix-info-card:hover {
+    transform: translateY(-15px) scale(1.03);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+}
+
+.cravix-icon-wrapper {
+    position: relative;
+    z-index: 2;
+    margin-bottom: 1.5rem;
+}
+
+.cravix-icon {
+    width: 90px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    border-radius: 50%;
+    background: var(--bg-gradient) !important;
+    color: white;
+    font-size: 2.5rem;
+    transition: all 0.4s ease;
+    box-shadow: 0 10px 20px rgba(74, 108, 247, 0.3);
+    position: relative;
+    z-index: 1;
+}
+
+.cravix-icon:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    top: 0;
+    left: 0;
+    transform: scale(0);
+    transition: all 0.4s ease;
+    z-index: -1;
+}
+
+.cravix-info-card:hover .cravix-icon {
+    transform: rotateY(180deg);
+}
+
+.cravix-info-card:hover .cravix-icon:after {
+    transform: scale(1.8);
+}
+
+.cravix-card-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: white;
+    position: relative;
+    z-index: 2;
+}
+
+.cravix-card-content {
+    color: white;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+.cravix-contact-link {
+    color: var(--white);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    font-weight: 500;
+    position: relative;
+    z-index: 2;
+    padding: 0.5rem 1rem;
+    border-radius: 30px;
+    background: var(--bg-gradient) !important;
+}
+
+.cravix-contact-link:hover {
+    color: white;
+    background: var(--bg-gradient) !important;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(74, 108, 247, 0.4);
+}
+
+.cravix-contact-link i {
+    margin-left: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.cravix-contact-link:hover i {
+    transform: translateX(5px);
+}
+
+@keyframes cravixSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(50px) scale(0.9);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.cravix-info-card {
+    animation: cravixSlideIn 0.8s ease forwards;
+    opacity: 0;
+}
+
+.cravix-info-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.cravix-info-card:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.cravix-info-card:nth-child(3) {
+    animation-delay: 0.5s;
+}
+
+.cravix-decoration {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(106, 17, 203, 0.1);
+    z-index: 0;
+}
+
+@media (max-width: 768px) {
+    .cravix-info-card {
+        margin-bottom: 2rem;
+    }
+
+    .cravix-section-title {
+        font-size: 2rem;
+    }
+}
